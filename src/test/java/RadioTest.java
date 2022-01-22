@@ -1,78 +1,48 @@
 import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class RadioTest {
 
     @Test
     public void setStation() {
         Radio station = new Radio();
-        station.currentStation = 4;
 
-        station.selectStation(station.currentStation);
-        station.nextStation(station.currentStation);
-        station.prevStation(station.currentStation);
+        station.selectStation(4);
+
+        int expected = 4;
+        int actual = station.getCurrentStation();
+
+        assertEquals(expected, actual);
     }
 
     @Test
-    public void setStation2() {
+    public void setBorderStation() {
         Radio station = new Radio();
-        station.currentStation = 10;
 
-        station.selectStation(station.currentStation);
+        station.selectStation(-1);
+        station.selectStation(0);
+        station.nextStation();
+        station.prevStation();
+        station.prevStation();
+        station.nextStation();
+        station.selectStation(10);
     }
 
     @Test
-    public void setStation3() {
+    public void getVolume() {
         Radio station = new Radio();
-        station.currentStation = -1;
-
-        station.selectStation(station.currentStation);
+        station.setMinVolume();
+        station.getCurrentVolume();
+        station.minusVolume();
+        station.plusVolume();
     }
 
     @Test
-    public void setStation4() {
+    public void getVolum2() {
         Radio station = new Radio();
-        station.currentStation = 0;
-
-        station.prevStation(station.currentStation);
-    }
-
-    @Test
-    public void setStation5() {
-        Radio station = new Radio();
-        station.currentStation = 9;
-
-        station.nextStation(station.currentStation);
-    }
-
-    @Test
-    public void setVolume1() {
-        Radio volume = new Radio();
-        volume.currentVolume = 10;
-
-        volume.plusVolume(volume.currentVolume);
-    }
-
-    @Test
-    public void setVolume2() {
-        Radio volume = new Radio();
-        volume.currentVolume = 5;
-
-        volume.plusVolume(volume.currentVolume);
-    }
-
-    @Test
-    public void setVolume3() {
-        Radio volume = new Radio();
-        volume.currentVolume = 0;
-
-        volume.minusVolume(volume.currentVolume);
-    }
-
-    @Test
-    public void setVolume4() {
-        Radio volume = new Radio();
-        volume.currentVolume = 5;
-
-        volume.minusVolume(volume.currentVolume);
+        station.setMaxVolume();
+        station.getCurrentVolume();
+        station.plusVolume();
+        station.minusVolume();
     }
 }
