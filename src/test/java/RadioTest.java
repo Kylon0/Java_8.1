@@ -16,6 +16,18 @@ public class RadioTest {
     }
 
     @Test
+    public void setStation2() {
+        Radio station = new Radio(100);
+
+        station.selectStation(85);
+
+        int expected = 85;
+        int actual = station.getCurrentStation();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
     public void setBorderStation() {
         Radio station = new Radio();
 
@@ -38,11 +50,19 @@ public class RadioTest {
     }
 
     @Test
-    public void getVolum2() {
+    public void getVolume2() {
         Radio station = new Radio();
         station.setMaxVolume();
         station.getCurrentVolume();
         station.plusVolume();
         station.minusVolume();
+    }
+
+    @Test
+    public void selectVolume() {
+        Radio station = new Radio();
+        station.selectVolume(50);
+        station.selectVolume(-1);
+        station.selectVolume(101);
     }
 }
